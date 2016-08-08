@@ -184,7 +184,7 @@ class WC_Swatches_Product_Data_Tab extends WC_EX_Product_Data_Tab_Swatches {
 												<label for="_swatch_type_options_<?php echo $key_attr; ?>_layout">Layout</label>
 											</td>
 											<td>
-												<?php $layouts = array('default' => __( 'No Label', 'wc_swatches_and_photos' ), 'label_above' => __( 'Show label above', 'wc_swatches_and_photos' )); ?>
+												<?php $layouts = array('default' => __( 'No Label', 'wc_swatches_and_photos' ), 'label_above' => __( 'Show label above', 'wc_swatches_and_photos' ), 'label_below' => __('Show label below')); ?>
 												<select name="_swatch_type_options[<?php echo $key; ?>][layout]">
 													<?php foreach ( $layouts as $layout => $layout_name ) : ?>
 														<option <?php selected( $current_layout, $layout ); ?> value="<?php echo $layout; ?>"><?php echo $layout_name; ?></option>
