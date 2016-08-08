@@ -1,4 +1,7 @@
 *** WooCommerce Variation Swatches and Photos***
+2016.08.04 - version 2.1.5
+    * Update:  Added "Label Below" option.
+
 2016.04.14 - version 2.1.4
 	* Fix:  Compatibility with WooCommerce Quick View. 
 	
