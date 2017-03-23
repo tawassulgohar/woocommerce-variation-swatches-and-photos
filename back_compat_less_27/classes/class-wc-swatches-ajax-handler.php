@@ -31,18 +31,14 @@ class WC_Swatches_Ajax_Handler {
 	}
 
 	/**
-
-	/**
 	 * Get an array of available variations for the a product.
-	 * Use this function as it's faster than the core implementation.
-	 * @param WC_Product $product
-	 *
-	 * @return array|mixed
+	 * Use this function as it's faster than the core implementation. 
+	 * @return array
 	 */
 	private function wc_swatches_get_available_variations( $product ) {
 		global $wpdb;
 		
-		$transient_name = 'wc_swatches_av_' . $product->get_id();
+		$transient_name = 'wc_swatches_av_' . $product->id;
 		$transient_data = get_transient($transient_name);
 		if (!empty($transient_data)){
 			return $transient_data;
@@ -54,7 +50,7 @@ class WC_Swatches_Ajax_Handler {
 		//This will prime the WP_Post cache so calls to get_child are much faster. 
 
 		$args = array(
-		    'post_parent' => $product->get_id(),
+		    'post_parent' => $product->id,
 		    'post_type' => 'product_variation',
 		    'orderby' => 'menu_order',
 		    'order' => 'ASC',
@@ -65,16 +61,15 @@ class WC_Swatches_Ajax_Handler {
 		$children = get_posts( $args );
 
 		foreach ( $children as $child ) {
-			$variation = wc_get_product( $child );
+			$variation = $product->get_child( $child );
 
 			// Hide out of stock variations if 'Hide out of stock items from the catalog' is checked
-			if ( empty( $variation->get_id() ) || ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) && !$variation->is_in_stock() ) ) {
+			if ( empty( $variation->variation_id ) || ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) && !$variation->is_in_stock() ) ) {
 				continue;
 			}
 
-
 			// Filter 'woocommerce_hide_invisible_variations' to optionally hide invisible variations (disabled variations and variations with empty price)
-			if ( apply_filters( 'woocommerce_hide_invisible_variations', false, $product->get_id(), $variation ) && !$variation->variation_is_visible() ) {
+			if ( apply_filters( 'woocommerce_hide_invisible_variations', false, $product->id, $variation ) && !$variation->variation_is_visible() ) {
 				continue;
 			}
 

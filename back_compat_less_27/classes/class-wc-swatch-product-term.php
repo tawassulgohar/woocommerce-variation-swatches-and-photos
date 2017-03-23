@@ -5,7 +5,7 @@ class WC_Product_Swatch_Term extends WC_Swatch_Term {
     protected $attribute_options;
 
     public function __construct($config, $option, $taxonomy, $selected = false) {
-        global $_wp_additional_image_sizes;
+        global $woocommerce, $_wp_additional_image_sizes;
 	
         $this->attribute_options = $attribute_options = $config->get_options();
 

@@ -60,6 +60,7 @@ class WC_Swatches_Product_Attribute_Images {
 
 	//Enqueue the scripts if on a product attribute page
 	public function on_admin_scripts() {
+		global $woocommerce_swatches;
 		$screen = get_current_screen();
 		if ( strpos( $screen->id, 'pa_' ) !== false ) :
 			wp_enqueue_media();
@@ -74,7 +75,7 @@ class WC_Swatches_Product_Attribute_Images {
 
 	//Initalize the actions for all product attribute taxonomoies
 	public function init_attribute_image_selector() {
-		global $_wp_additional_image_sizes;
+		global $woocommerce, $_wp_additional_image_sizes;
 		$screen = get_current_screen();
 
 		if ( strpos( $screen->id, 'pa_' ) !== false ) :
@@ -107,6 +108,7 @@ class WC_Swatches_Product_Attribute_Images {
 
 	//The field used when adding a new term to an attribute taxonomy
 	public function woocommerce_add_attribute_thumbnail_field() {
+		global $woocommerce;
 		?>
 		<div class="form-field ">
 			<label for="product_attribute_swatchtype_<?php echo $this->meta_key; ?>">Swatch Type</label>
@@ -161,7 +163,10 @@ class WC_Swatches_Product_Attribute_Images {
 
 	//The field used when editing an existing proeuct attribute taxonomy term
 	public function woocommerce_edit_attributre_thumbnail_field( $term, $taxonomy ) {
+		global $woocommerce;
+
 		$swatch_term = new WC_Swatch_Term( $this->meta_key, $term->term_id, $taxonomy, false, $this->image_size );
+		$image = '';
 		?>
 
 		<tr class="form-field ">
@@ -284,13 +289,11 @@ class WC_Swatches_Product_Attribute_Images {
 
 		if ($posts_to_update && !is_wp_error($posts_to_update)){
 			foreach($posts_to_update as $post_id){
-			    $product = wc_get_product($post_id);
-				$swatch_type_options = $product->get_meta('_swatch_type_options', true );
+				$swatch_type_options = get_post_meta( $post_id, '_swatch_type_options', true );
 				if (isset($swatch_type_options[$old_key])){
 					$swatch_type_options[$new_key] = $swatch_type_options[$old_key];
 					unset($swatch_type_options[$old_key]);
-					$product->update_meta_data('_swatch_type_options', $swatch_type_options);
-					$product->save_meta_data();
+					update_post_meta($post_id, '_swatch_type_options', $swatch_type_options);
 				}
 			}
 		}
