@@ -48,6 +48,7 @@ class WC_Product_Swatch_Term extends WC_Swatch_Term {
         if (isset($attribute_options['attributes'][$lookup_key]['image']) && $attribute_options['attributes'][$lookup_key]['image']) {
             $this->thumbnail_id = $attribute_options['attributes'][$lookup_key]['image'];
             $this->thumbnail_src = current(wp_get_attachment_image_src($this->thumbnail_id, $this->size));
+	        $this->thumbnail_alt = trim( strip_tags( get_post_meta(  $this->thumbnail_id, '_wp_attachment_image_alt', true ) ) );
         } else {
             $this->thumbnail_src = apply_filters( 'woocommerce_placeholder_img_src', WC()->plugin_url() . '/assets/images/placeholder.png' );
         }

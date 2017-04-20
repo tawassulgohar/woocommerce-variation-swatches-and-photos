@@ -25,7 +25,7 @@ class WC_SwatchesPlugin {
 		add_action( 'init', array( &$this, 'on_init' ) );
 
 		add_action( 'wc_quick_view_enqueue_scripts', array( $this, 'on_enqueue_scripts' ) );
-		add_action( 'wp_enqueue_scripts', array( &$this, 'on_enqueue_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'on_enqueue_scripts' ) );
 
 
 		add_action( 'admin_head', array( &$this, 'on_enqueue_scripts' ) );

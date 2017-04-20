@@ -4,11 +4,11 @@
   Plugin Name: WooCommerce Variation Swatches and Photos
   Plugin URI: https://woocommerce.com/products/variation-swatches-and-photos/
   Description: WooCommerce Swatches and Photos allows you to configure colors and photos for shoppers on your site to use when picking variations. Requires WooCommerce 1.5.7+
-  Version: 3.0.0
+  Version: 3.0.3
   Author: Lucas Stark
   Author URI: https://www.elementstark.com/about
   Requires at least: 3.5
-  Tested up to: 4.7.0
+  Tested up to: 4.7.3
 
   Copyright: © 2009-2017 Lucas Stark.
   License: GNU General Public License v3.0

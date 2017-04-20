@@ -1,10 +1,15 @@
-*** WooCommerce Variation Swatches and Photos***
+*** WooCommerce Variation Swatches and Photos ***
+2017.04.05 - version 3.0.3
+    * Fix:  Fix fatal error when loading swatches via AJAX.
+
+2017.03.07 - version 3.0.2
+    * Update:  Render image alt text for image swatches.
+
+2017.02.06 - version 3.0.1
+    * Fix:  Rebind variation forms when part of a composite product and a new composite option is shown.
+
 2016.12.25 - version 3.0.0
     * Update:   WC 2.7 Ready
-
-2016.12.09 - version 2.1.10
-    * Update:   Adds small amount of padding around radio inputs.
-    * Update:   Tested to WP 4.7
 
 2017.01.10 - version 2.1.11
     * Update:  Compatibility with WC 2.6.7 and greater for default attribute selections.
