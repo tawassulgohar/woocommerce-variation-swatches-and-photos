@@ -13,6 +13,7 @@ class WC_Swatch_Term {
 	public $color;
 	public $thumbnail_src;
 	public $thumbnail_id;
+	public $thumbnail_alt = 'thumbnail';
 	public $size;
 	public $width = 32;
 	public $height = 32;
@@ -48,6 +49,7 @@ class WC_Swatch_Term {
 				$imgsrc = wp_get_attachment_image_src( $this->thumbnail_id, $this->size );
 				if ( $imgsrc && is_array( $imgsrc ) ) {
 					$this->thumbnail_src = current( $imgsrc );
+					$this->thumbnail_alt = trim( strip_tags( get_post_meta(  $this->thumbnail_id, '_wp_attachment_image_alt', true ) ) );
 				} else {
 					$this->thumbnail_src = apply_filters( 'woocommerce_placeholder_img_src', WC()->plugin_url() . '/assets/images/placeholder.png' );
 				}
@@ -79,7 +81,7 @@ class WC_Swatch_Term {
 		$href = apply_filters( 'woocommerce_swatches_get_swatch_href', '#', $this );
 		$anchor_class = apply_filters( 'woocommerce_swatches_get_swatch_anchor_css_class', 'swatch-anchor', $this );
 		$image_class = apply_filters( 'woocommerce_swatches_get_swatch_image_css_class', 'swatch-img', $this );
-		$image_alt = apply_filters( 'woocommerce_swatches_get_swatch_image_alt', 'thumbnail', $this );
+		$image_alt = apply_filters( 'woocommerce_swatches_get_swatch_image_alt', $this->thumbnail_alt, $this );
 
 		if ( $this->type == 'photo' || $this->type == 'image' ) {
 			$picker .= '<a href="' . $href . '" style="width:' . $this->width . 'px;height:' . $this->height . 'px;" title="' . esc_attr( $this->term_label ) . '" class="' . $anchor_class . '">';

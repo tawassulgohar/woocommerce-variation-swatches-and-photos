@@ -377,7 +377,7 @@
         var $form = $(e.target);
         forms.push($form);
 
-        if ( !$form.data('has_swatches_form') ) {
+        if ( !$form.data('has_swatches_form') || $form.hasClass('summary_content') ) {
             if ($form.find('.swatch-control').length) {
                 $form.data('has_swatches_form', true);
 

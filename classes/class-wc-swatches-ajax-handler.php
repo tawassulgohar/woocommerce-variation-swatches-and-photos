@@ -68,7 +68,8 @@ class WC_Swatches_Ajax_Handler {
 			$variation = wc_get_product( $child );
 
 			// Hide out of stock variations if 'Hide out of stock items from the catalog' is checked
-			if ( empty( $variation->get_id() ) || ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) && !$variation->is_in_stock() ) ) {
+			$id = $variation->get_id();
+			if ( empty( $id ) || ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) && !$variation->is_in_stock() ) ) {
 				continue;
 			}
 
