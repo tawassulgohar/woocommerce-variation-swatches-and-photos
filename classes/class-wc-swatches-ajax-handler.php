@@ -80,7 +80,7 @@ class WC_Swatches_Ajax_Handler {
 			}
 
 			$available_variations[] = array(
-			    'variation_id' => $variation->variation_id,
+			    'variation_id' => $variation->get_id(),
 			    'variation_is_active' => $variation->variation_is_active(),
 			    'attributes' => $variation->get_variation_attributes(),
 			);
