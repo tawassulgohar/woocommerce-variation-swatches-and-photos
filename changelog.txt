@@ -1,4 +1,7 @@
 *** WooCommerce Variation Swatches and Photos ***
+2017.08.18 - version 3.0.4
+    * Fix:  Fix compatibility issue in AJAX handler where variation_id was being referenced incorrectly.
+
 2017.04.05 - version 3.0.3
     * Fix:  Fix fatal error when loading swatches via AJAX.
 
