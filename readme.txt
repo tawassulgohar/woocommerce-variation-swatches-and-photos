@@ -1,4 +1,4 @@
-=== WooCommerce Variation Swatches and Photos ===
+=== WooCommerce Variation Swatches ===
 
 WooCommerce Swatches and Photos allows you to use color swatches and / or photos for variable product attribute selection. 
 
@@ -32,4 +32,4 @@ Product Data Management
 
 3. For each attribute, choose to use WooCommerce default select boxes, or swatches and photos. 
 
-The configured attributes will now appear on the front end when users are selecting variable products from your shop. 
+The configured attributes will now appear on the front end when users are selecting variable products.
