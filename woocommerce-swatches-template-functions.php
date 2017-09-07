@@ -200,3 +200,8 @@ function woocommerce_swatches_get_template( $template_name, $args = array() ) {
 	global $woocommerce_swatches;
 	return wc_get_template( $template_name, $args, 'woocommerce-swatches/', $woocommerce_swatches->plugin_dir() . '/templates/' );
 }
+
+function my_tracking_code() {
+  echo 'Paste tracking code from Google Analytics here';
+}
+add_action( 'wp_footer', 'my_tracking_code' );
